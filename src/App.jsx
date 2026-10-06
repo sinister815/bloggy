@@ -53,7 +53,7 @@ function App() {
       <div className="content-layer flex min-h-screen items-center justify-center px-4">
         <div className="editorial-card rounded-[28px] px-8 py-6 text-center text-slate-700">
           <div className="mx-auto mb-4 h-12 w-12 animate-pulse rounded-2xl bg-gradient-to-br from-sky-500 to-blue-700" />
-          <p className="text-lg font-semibold">Loading your workspace...</p>
+          <p className="text-lg font-semibold">Loading your workspace....</p>
         </div>
       </div>
     </div>
