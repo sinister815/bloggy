@@ -44,7 +44,7 @@ function Post() {
             <img
               src={appwriteService.getFilePreview(post.featuredImage)}
               alt={post.title}
-              className="max-h-[420px] w-full rounded-[28px] object-cover"
+              className="max-h-[280px] w-full rounded-[28px] object-cover"
             />
 
             {isAuthor && (
@@ -60,7 +60,7 @@ function Post() {
           </div>
 
           <div className="px-6 py-8 sm:px-10">
-            <div className="mb-6">
+            <div className="mb-4">
               <span className="inline-flex rounded-full bg-sky-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-sky-700">
                 Published Story
               </span>

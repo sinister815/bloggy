@@ -2,14 +2,31 @@ import React, { useState } from 'react'
 import appwriteService from '../appwrite/dbAuth'
 import { Link } from 'react-router-dom'
 
-function PostCard({ $id, title, featuredImage }) {
+function stripHtml(html) {
+  if (!html) return ''
+  return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
+function buildPreview(content, limit = 150) {
+  const source = stripHtml(content)
+  if (!source) return 'Read More'
+  return (
+    <>
+      {source.slice(0, limit).trim()}
+      <span className="font-semibold text-slate-900"> ...Read More</span>
+    </>
+  )
+}
+
+function PostCard({ $id, title, featuredImage, content }) {
   const [hasImageError, setHasImageError] = useState(false)
   const imageSrc = featuredImage ? appwriteService.getFilePreview(featuredImage) : null
+  const preview = buildPreview(content)
 
   return (
     <Link to={`/post/${$id}`}>
       <article className="editorial-card h-full overflow-hidden rounded-2xl transition duration-200 hover:-translate-y-0.5">
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
           {imageSrc && !hasImageError ? (
             <img
               src={imageSrc}
@@ -32,9 +49,7 @@ function PostCard({ $id, title, featuredImage }) {
         </div>
         <div className="space-y-2 p-4 text-left">
           <h2 className="text-lg font-semibold leading-tight text-slate-900">{title}</h2>
-          <p className="text-sm leading-6 text-slate-500">
-            Open the full article to read the complete post and explore its content.
-          </p>
+          <p className="text-sm leading-6 text-slate-500">{preview}</p>
         </div>
       </article>
     </Link>

@@ -1,85 +1,66 @@
 # Bloggy
 
-A React + Vite blog application built with Appwrite for authentication, database, and storage.
+A full-stack blog: React + Vite frontend, Express + MongoDB API, JWT auth in an
+httpOnly cookie, and Cloudinary cover images.
 
-## Features
+## Structure
 
-- Email/password authentication with Appwrite
-- CRUD blog post management
-- Rich text editing using TinyMCE
-- Appwrite database and storage integration
-- React Router v7 pages for home, post detail, add/edit post, login, signup
-- Redux Toolkit for state management
+- `frontend/` — React 19 + Vite 8 + Tailwind 4 SPA (Redux Toolkit, React Router, TinyMCE)
+- `backend/` — Express 4 + Mongoose API (`/api/posts`, `/api/users`, `/api/cloudinary`)
+- `src/`, `conf/`, root `package.json` — legacy Appwrite version kept for reference only;
+  it is not part of the running app.
 
-## Tech stack
+## Run locally
 
-- React 19
-- Vite 8
-- Appwrite 24
-- Tailwind CSS 4
-- Redux Toolkit
-- TinyMCE rich text editor
-- ESLint
-
-## Setup
-
-1. Install dependencies:
+1. Backend (port 8000):
 
 ```bash
+cd backend
 npm install
+npm start          # or: npm run dev  (node --watch)
 ```
 
-2. Create a `.env` file in the project root with Appwrite settings:
+`backend/.env` must define:
 
 ```env
-VITE_APPWRITE_URL=https://[HOSTNAME_OR_IP]/v1
-VITE_APPWRITE_PROJECT_ID=your_project_id
-VITE_APPWRITE_DATABASE_ID=your_database_id
-VITE_APPWRITE_TABLE_ID=your_table_id
-VITE_APPWRITE_BUCKET_ID=your_bucket_id
+PORT=8000
+MONGODB_URI=mongodb://127.0.0.1:27017/bloggy
+JWT_SECRET=change-me
+JWT_EXPIRES_IN=7d
+CORS_ORIGIN=http://localhost:5173,http://localhost:5174
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
+CLOUDINARY_FOLDER=bloggy/posts
 ```
 
-3. Start the development server:
+2. Frontend (Vite dev server):
 
 ```bash
-npm run dev
+cd frontend
+npm install
+npm run dev        # http://localhost:5173 (or 5174 if 5173 is taken)
 ```
 
-4. Open the app in your browser at:
+`frontend/.env` only needs the API URL:
 
-```text
-http://localhost:5173
+```env
+VITE_API_URL=http://localhost:8000/api
 ```
 
-## Scripts
+Use the same hostname (`localhost` or `127.0.0.1`) for both servers — the JWT
+cookie is scoped to the backend host, so mixing them signs you out on writes.
 
-- `npm run dev` — start the Vite development server
-- `npm run build` — build the production bundle
-- `npm run preview` — preview the production build locally
-- `npm run lint` — run ESLint across the project
+## API contract
 
-## Environment variables
+- Posts are addressed by `slug`: `GET/PUT/DELETE /api/posts/:slug`
+- `GET /api/posts?page=1&limit=12&search=term` returns `{ rows, page, pages, total }`
+- `GET /api/posts/me` lists the signed-in user's posts
+- `featuredImage` is `{ url, publicId }` from `POST /api/cloudinary/upload`
 
-This project uses `conf/conf.js` to read the following Vite environment variables:
+## Scripts (`frontend/`)
 
-- `VITE_APPWRITE_URL`
-- `VITE_APPWRITE_PROJECT_ID`
-- `VITE_APPWRITE_DATABASE_ID`
-- `VITE_APPWRITE_TABLE_ID`
-- `VITE_APPWRITE_BUCKET_ID`
-
-## Project structure
-
-- `src/` — application source code
-  - `appwrite/` — Appwrite client and auth helpers
-  - `components/` — reusable UI components
-  - `pages/` — route page components
-  - `store/` — Redux Toolkit store and slices
-- `public/` — static assets, including TinyMCE distribution
-- `conf/` — Appwrite configuration loader
-
-## Notes
-
-- Keep Appwrite credentials private and do not commit `.env` files.
-- `public/tinymce/` is included for the rich text editor assets.
-- Adjust your Appwrite project rules and permissions to match the app’s authentication flow.
+- `npm run dev` — Vite dev server
+- `npm run build` — production bundle
+- `npm run preview` — preview the build
+- `npm run lint` — ESLint (`src/`; `dist` and `public` are ignored)

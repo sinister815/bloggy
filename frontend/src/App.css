@@ -1,0 +1,47 @@
+.page-shell {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.post-content {
+  color: #334155;
+  font-size: 1.02rem;
+  line-height: 1.82;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  color: #0f172a;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.18;
+  margin: 1.5rem 0 0.8rem;
+}
+
+.post-content p {
+  margin: 0 0 1rem;
+}
+
+.post-content ul,
+.post-content ol {
+  padding-left: 1.4rem;
+  margin: 0 0 1rem;
+}
+
+.post-content img {
+  max-width: 100%;
+  border-radius: 1rem;
+}

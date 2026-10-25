@@ -42,7 +42,7 @@ function App() {
     <div className="page-shell">
       <div className="content-layer flex min-h-screen flex-col">
         <Header />
-        <main className="flex-1 pb-12">
+        <main className="flex-1">
           <Outlet />
         </main>
         <Footer />
