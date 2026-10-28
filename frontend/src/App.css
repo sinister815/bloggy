@@ -45,3 +45,104 @@
   max-width: 100%;
   border-radius: 1rem;
 }
+
+
+/* Shared typography and controls for the public information pages. */
+.info-page-content {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.info-page-content section + section {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.info-page-content h2 {
+  margin: 0 0 0.8rem;
+  color: #0f172a;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.info-page-content p {
+  margin: 0 0 1rem;
+}
+
+.info-page-content p:last-child {
+  margin-bottom: 0;
+}
+
+.info-page-content ul,
+.info-page-content ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.info-page-content li + li {
+  margin-top: 0.45rem;
+}
+
+.info-page-content strong {
+  color: #1e293b;
+  font-weight: 650;
+}
+
+.info-page-link {
+  color: #0369a1;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #bae6fd;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.info-page-link:hover {
+  color: #0c4a6e;
+  text-decoration-color: currentColor;
+}
+
+.contact-detail-card {
+  margin-top: 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #f8fafc;
+  padding: 1rem 1.15rem;
+}
+
+.contact-field {
+  display: grid;
+  gap: 0.5rem;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.8rem;
+  background: #fff;
+  padding: 0.8rem 0.9rem;
+  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
+
+.contact-field textarea {
+  resize: vertical;
+}

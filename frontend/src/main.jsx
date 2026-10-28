@@ -12,6 +12,11 @@ import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
 import AllPosts from './pages/AllPosts.jsx'
 import NotFound from './pages/NotFound.jsx'
+import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import TermsAndConditions from './pages/TermsAndConditions.jsx'
+import Disclaimer from './pages/Disclaimer.jsx'
 
 const router = createBrowserRouter([
   {
@@ -65,6 +70,26 @@ const router = createBrowserRouter([
       {
         path: '/post/:slug',
         element: <Post />,
+      },
+      {
+        path: '/about',
+        element: <About />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+      {
+        path: '/privacy-policy',
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: '/terms-and-conditions',
+        element: <TermsAndConditions />,
+      },
+      {
+        path: '/disclaimer',
+        element: <Disclaimer />,
       },
       {
         path: '*',
