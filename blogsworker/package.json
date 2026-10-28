@@ -1,0 +1,10 @@
+{
+  "name": "blog-poster-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker to post blogs",
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

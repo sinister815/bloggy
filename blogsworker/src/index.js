@@ -5,17 +5,15 @@ export default {
     }
 
     try {
-      // Fetch config from KV
-      const endpoint = await env.BLOG_CONFIG.get('API_ENDPOINT');
-      const apiKey = await env.BLOG_CONFIG.get('API_KEY');
+      const endpoint = env.API_ENDPOINT;
+      const apiKey = env.API_KEY;
 
       if (!endpoint || !apiKey) {
-        return new Response('KV Configuration missing: API_ENDPOINT or API_KEY not found.', { status: 500 });
+        return new Response('Configuration missing: API_ENDPOINT or API_KEY environment variables not found.', { status: 500 });
       }
 
       const body = await request.json();
 
-      // Forward the request to the backend
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
