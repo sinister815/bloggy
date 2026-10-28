@@ -27,6 +27,14 @@ function Footer() {
         { label: 'Sign Up', to: '/signup' },
       ]
 
+  const informationLinks = [
+    { label: 'About Us', to: '/about' },
+    { label: 'Contact Us', to: '/contact' },
+    { label: 'Privacy Policy', to: '/privacy-policy' },
+    { label: 'Terms & Conditions', to: '/terms-and-conditions' },
+    { label: 'Disclaimer', to: '/disclaimer' },
+  ]
+
   return (
     <footer className="rounded-t-[8px] bg-slate-900 text-white shadow-lg backdrop-blur">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-4 py-3 sm:px-6 lg:px-8">
@@ -34,13 +42,30 @@ function Footer() {
           <Logo width="140px" />
         </div> */}
 
-        <nav aria-label="Footer navigation">
-          <ul className="flex flex-wrap items-center justify-center gap-3 text-slate-300">
+        <nav aria-label="Main footer navigation">
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-300">
             {links.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="transition text-xs font-medium hover:text-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="text-xs font-medium transition hover:text-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="mt-1 h-px w-full max-w-4xl bg-slate-700/70" />
+
+        <nav aria-label="Policies and information">
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-400">
+            {informationLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className="text-xs transition hover:text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 >
                   {link.label}
                 </Link>
