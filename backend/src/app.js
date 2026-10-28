@@ -52,6 +52,10 @@ app.get('/', (req, res) => {
   res.send('Bloggy API running')
 })
 
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ success: true, status: 'alive', timestamp: new Date().toISOString() })
+})
+
 // Central error handler
 app.use((err, req, res, next) => {
   console.error('API error:', err.message)

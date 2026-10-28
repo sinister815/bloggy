@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { protect } from '../middlewares/authMiddleware.js'
+import { mcpAuth } from '../middlewares/mcpAuth.js'
 import {
   getPosts,
   getPostBySlug,
@@ -14,6 +15,7 @@ const router = Router()
 router.get('/', getPosts)
 router.get('/me', protect, getMyPosts)
 router.get('/:slug', getPostBySlug)
+router.post('/mcp-post', mcpAuth, createPost)
 router.post('/', protect, createPost)
 router.put('/:slug', protect, updatePost)
 router.delete('/:slug', protect, deletePost)
