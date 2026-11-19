@@ -118,6 +118,8 @@ function Post() {
               <img
                 src={coverImage}
                 alt={post.title}
+                loading="eager"
+                decoding="async"
                 className="max-h-[280px] w-full rounded-[28px] object-cover"
               />
 
@@ -143,6 +145,25 @@ function Post() {
                 </Button>
               </div>
             )
+          )}
+
+          {post.featuredImage?.credit?.author && (
+            <p className="border-b border-slate-200/80 px-6 py-3 text-xs text-slate-500 sm:px-10">
+              Photo:{' '}
+              {post.featuredImage.credit.pageUrl ? (
+                <a
+                  href={post.featuredImage.credit.pageUrl}
+                  target="_blank"
+                  rel="noopener nofollow"
+                  className="underline hover:text-slate-700"
+                >
+                  {post.featuredImage.credit.author}
+                </a>
+              ) : (
+                post.featuredImage.credit.author
+              )}{' '}
+              / Pixabay
+            </p>
           )}
 
           <div className="px-6 py-8 sm:px-10">

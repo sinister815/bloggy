@@ -1,3 +1,13 @@
-name = "blog-poster-worker"
+name = "bloggy-mcp"
 main = "src/index.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Non-secret configuration. Deploy these with:
+#   npx wrangler deploy --var API_BASE:"https://bloggy-q1eg.onrender.com/api/mcp"
+[vars]
+API_BASE = "https://bloggy-q1eg.onrender.com/api/mcp"
+
+# Secrets (never commit values):
+#   npx wrangler secret put MCP_API_KEY     # same value as Render's MCP_API_KEY
+#   npx wrangler secret put MCP_TOKEN       # bearer token MCP clients must send

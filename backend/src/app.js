@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url'
 import postRoutes from './routes/postRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import cloudinaryRoutes from './routes/cloudinaryRoutes.js'
+import mcpRoutes from './routes/mcpRoutes.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -47,6 +48,7 @@ app.use('/uploads', express.static(uploadsDir))
 app.use('/api/posts', postRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/cloudinary', cloudinaryRoutes)
+app.use('/api/mcp', mcpRoutes)
 
 app.get('/', (req, res) => {
   res.send('Bloggy API running')

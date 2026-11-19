@@ -26,6 +26,14 @@ const postSchema = new mongoose.Schema(
       type: {
         url: { type: String, required: true },
         publicId: { type: String, required: true },
+        // Set when the image was imported from a stock provider through MCP.
+        credit: {
+          source: String,
+          author: String,
+          authorUrl: String,
+          pageUrl: String,
+          tags: [String],
+        },
       },
       required: false,
     },

@@ -30,6 +30,8 @@ function PostCard({ slug, title, featuredImage, content }) {
             <img
               src={imageSrc}
               alt={title}
+              loading="lazy"
+              decoding="async"
               onError={() => setHasImageError(true)}
               className="h-full w-full object-cover transition duration-300 hover:scale-[1.02]"
             />

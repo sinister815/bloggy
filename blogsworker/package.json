@@ -1,10 +1,20 @@
 {
-  "name": "blog-poster-worker",
-  "version": "1.0.0",
-  "description": "Cloudflare Worker to post blogs",
+  "name": "bloggy-mcp",
+  "version": "2.0.0",
+  "description": "MCP server for Bloggy: list, create, update and delete posts, with Pixabay-to-Cloudinary cover images",
+  "private": true,
+  "type": "module",
   "main": "src/index.js",
-  "dependencies": {},
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "wrangler deploy --dry-run --outdir dist"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.6.7"
+  },
   "devDependencies": {
-    "wrangler": "^3.0.0"
+    "wrangler": "^4.42.0"
   }
 }
