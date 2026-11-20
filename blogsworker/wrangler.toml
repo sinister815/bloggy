@@ -1,4 +1,4 @@
-name = "bloggy-mcp"
+name = "bloggy"
 main = "src/index.js"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
@@ -7,6 +7,22 @@ compatibility_flags = ["nodejs_compat"]
 #   npx wrangler deploy --var API_BASE:"https://bloggy-q1eg.onrender.com/api/mcp"
 [vars]
 API_BASE = "https://bloggy-q1eg.onrender.com/api/mcp"
+
+# Keeps the dashboard's Observability settings in sync with the repo.
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+invocation_logs = true
+persist = true
+
+[observability.traces]
+enabled = true
+head_sampling_rate = 1
+persist = true
 
 # Secrets (never commit values):
 #   npx wrangler secret put MCP_API_KEY     # same value as Render's MCP_API_KEY
