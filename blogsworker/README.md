@@ -51,6 +51,13 @@ Pixabay and Cloudinary credentials live **only on the API server**. The Worker h
    `API_BASE` is already set in `wrangler.toml` to
    `https://bloggy-q1eg.onrender.com/api/mcp`.
 
+   > **Dashboard caveat:** add `MCP_TOKEN` and `MCP_API_KEY` with type **Secret**, never
+   > as a plaintext **Variable**. A `wrangler deploy` (including a Git / Workers Builds
+   > rebuild) overwrites dashboard Variables with the ones in `wrangler.toml`, so a
+   > plaintext `MCP_TOKEN` disappears after the next deploy and `/mcp` answers
+   > `500 MCP_TOKEN secret is not configured on this Worker`. Secrets survive deploys.
+   > `keep_vars = true` in `wrangler.toml` also protects plaintext dashboard variables.
+
 2. Deploy:
 
    ```bash

@@ -3,6 +3,12 @@ main = "src/index.js"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Keep plaintext variables that were added in the Cloudflare dashboard.
+# Without this, every `wrangler deploy` (including Git/Workers Builds deploys)
+# overwrites dashboard variables with only the ones below. Secrets are always
+# kept across deploys, so MCP_TOKEN / MCP_API_KEY belong in Secrets.
+keep_vars = true
+
 # Non-secret configuration. Deploy these with:
 #   npx wrangler deploy --var API_BASE:"https://bloggy-q1eg.onrender.com/api/mcp"
 [vars]
