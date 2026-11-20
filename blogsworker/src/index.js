@@ -14,7 +14,7 @@ import { createMcpHandler, McpServer } from '@modelcontextprotocol/server'
 import { z } from 'zod'
 
 const SERVER_NAME = 'bloggy-mcp'
-const SERVER_VERSION = '2.0.0'
+const SERVER_VERSION = '2.0.1'
 
 /* ------------------------------------------------------------------ */
 /* helpers                                                             */
